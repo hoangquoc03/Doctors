@@ -56,4 +56,12 @@ public class PatientController {
 
         return ResponseEntity.ok("Valid age");
     }
+    @GetMapping("/{patientId}/prescription/{prescripptionId}")
+    public String getPrescription(@PathVariable int patientId,@PathVariable int prescriptionId){
+        return "Prescription ID =" + prescriptionId +"of patient ID = " +patientId;
+    }
+    @PostMapping("/{patientId}/prescriptions")
+    public String addPrescription(@PathVariable int patienId){
+        return "Add new prescription for patient Id =" + patienId;
+    }
 }
