@@ -1,5 +1,6 @@
 package org.example.namingconvention.controller;
 
+import org.example.namingconvention.exception.ResourceNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -63,5 +64,16 @@ public class PatientController {
     @PostMapping("/{patientId}/prescriptions")
     public String addPrescription(@PathVariable int patienId){
         return "Add new prescription for patient Id =" + patienId;
+    }
+    @GetMapping("/{id}")
+    public String getPatientById(@PathVariable int id) {
+
+        if (id == 123) {
+            throw new ResourceNotFoundException(
+                    "Không tìm thấy bệnh nhân với ID: " + id
+            );
+        }
+
+        return "Patient ID = " + id;
     }
 }
